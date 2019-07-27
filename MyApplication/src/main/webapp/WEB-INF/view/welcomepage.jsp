@@ -212,7 +212,110 @@
 					</form>
 					</div>
 					</c:when>
+					
+					
+					<c:when test="${mode=='MODE_LOGIN_SELLER' }">
+			<div class="container text-center">
+				<h3>User Login</h3>
+				<hr>
+				<form class="form-horizontal" method="POST" action="/login-seller">
+					<c:if test="${not empty error }">
+						<div class= "alert alert-danger">
+							<c:out value="${error }"></c:out>
+							</div>
+					</c:if>
+					<div class="form-group">
+						<label class="control-label col-md-3">Username</label>
+						<div class="col-md-7">
+							<input type="text" class="form-control" name="username"
+								value="${user.username }" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3">Password</label>
+						<div class="col-md-7">
+							<input type="password" class="form-control" name="password"
+								value="${user.password }" />
+						</div>
+					</div>
+					<div class="form-group ">
+						<input type="submit" class="btn btn-primary" value="Login" />
+					</div>
+					</form>
+					</div>
+					</c:when>
+					
+					<c:when test="${mode=='MODE_LOGIN_ADMIN' }">
+			<div class="container text-center">
+				<h3>User Login</h3>
+				<hr>
+				<form class="form-horizontal" method="POST" action="/login-admin">
+					<c:if test="${not empty error }">
+						<div class= "alert alert-danger">
+							<c:out value="${error }"></c:out>
+							</div>
+					</c:if>
+					<div class="form-group">
+						<label class="control-label col-md-3">Username</label>
+						<div class="col-md-7">
+							<input type="text" class="form-control" name="username"
+								value="${user.username }" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-md-3">Password</label>
+						<div class="col-md-7">
+							<input type="password" class="form-control" name="password"
+								value="${user.password }" />
+						</div>
+					</div>
+					<div class="form-group ">
+						<input type="submit" class="btn btn-primary" value="Login" />
+					</div>
+					</form>
+					</div>
+					</c:when>
+					
+					<c:when test="${mode=='Cart_Items' }">
+			<div class="container text-center" id="tasksDiv">
+				<h3>All Users</h3>
+				<hr>
+				<div class="table-responsive">
+					<table class="table table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>Product ID</th>
+								<th>Product Name</th>
+								<th>Product Price</th>
+								<th>Manufacturing Date</th>
+								<th>Expiry Date</th>
+								<th>Quantity</th>
+								<th>Delete</th>
+								<th>Edit</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="user" items="${users }">
+								<tr>
+									<td>${product.id}</td>
+									<td>${product.prooductName}</td>
+									<td>${product.productPrice}</td>
+									<td>${product.ManufacturingDate}</td>
+									<td>${product.expiryDate}</td>
+									<td>${product.quantity}</td>
+									<td><a href="/delete-user?id=${user.id }"><span
+											class="glyphicon glyphicon-trash"></span></a></td>
+									<td><a href="/edit-user?id=${user.id }"><span
+											class="glyphicon glyphicon-pencil"></span></a></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</c:when>
 	</c:choose>
+	
 
 
 	<!-- Optional JavaScript -->
